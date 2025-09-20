@@ -4,14 +4,10 @@ function generateBreadCrumb() {
   // Split the pathname into parts
   let pathArray = window.location.pathname.split("/").filter((p) => p);
 
-  // Detect repo name (first part of GitHub Pages URL)
-  const repoName = pathArray.length > 0 ? pathArray[0] : "";
+  const repoName = pathArray.length > 0 ? pathArray[0] : "courses-notes";
   const basePath = `/${repoName}`;
 
-  // Drop repo name from breadcrumb display
-  if (repoName) {
-    pathArray.shift();
-  }
+  pathArray.shift();
 
   // If last segment is index.html, drop it
   if (pathArray[pathArray.length - 1]?.toLowerCase() === "index.html") {
