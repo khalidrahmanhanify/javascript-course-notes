@@ -1,50 +1,32 @@
 function generateBreadCrumb() {
   const breadCrumbContainer = document.getElementById("breadcrumb");
+  let pathArray = window.location.pathname.split("/").filter((p) => p);
+  const repoName = "javascript-course-notes";
 
-  // Get current path or use simulated path
-  let currentPath = window.simulatedPath || window.location.pathname;
-
-  // Split the pathname into parts
-  let pathArray = currentPath
-    .split("/")
-    .filter((p) => p && p.toLowerCase() !== "index.html");
-
-  // Detect repo name (first segment)
-  const repoName = pathArray.length > 0 ? pathArray[0] : "";
-  const basePath = repoName ? `/${repoName}` : "";
-
-  // Remove repo name from breadcrumb segments
-  if (repoName) {
-    pathArray.shift();
+  // If last segment is index.html, drop it
+  if (pathArray[pathArray.length - 1]?.toLowerCase() === "index.html") {
+    pathArray.pop();
   }
 
-  // Start breadcrumb with home icon (always links to repo root index.html)
   let breadcrumbHTML = `
-                <a href="${basePath}/index.html" title="Home">
-                    <img src="${basePath}/assets/Icons/monitor.png" alt="Home" style="width: 24px; height: 24px;"/>
-                </a>
-            `;
+    <a href="/index.html">
+      <img src="${repoName}/assets/Icons/monitor.png" style="width: 30px;"/>
+    </a>
+     <img src="${repoName}/assets/Icons/arrow_right.png" style="width: 20px; height: 20px;"/>
+  `;
 
-  let accumulatedPath = basePath;
-
-  // Generate breadcrumb segments
+  let fullPath = "";
   pathArray.forEach((segment, index) => {
-    // Add arrow before each segment (except first one which is handled by home icon)
-    breadcrumbHTML += `<img src="${basePath}/assets/Icons/arrow_right.png" alt="→" style="width: 16px; height: 16px; margin: 0 10px;" />`;
+    if (segment === repoName) return;
+    fullPath += `/${segment}`;
 
-    accumulatedPath += `/${segment}`;
-    const isLast = index === pathArray.length - 1;
-
-    if (!isLast) {
-      breadcrumbHTML += `<a href="${accumulatedPath}">${decodeURIComponent(
-        segment
-      )}</a>`;
-    } else {
-      // For the last segment, remove .html if present
-      const displayName = segment.replace(/\.(html|php|aspx)$/i, "");
-      breadcrumbHTML += `<span>${decodeURIComponent(displayName)}</span>`;
-    }
+    breadcrumbHTML += `
+     
+    `;
+    breadcrumbHTML += `<a href="${fullPath}">${decodeURIComponent(segment)}</a>
+       <img src="${repoName}/assets/Icons/arrow_right.png" style="width: 20px; height: 20px;"/>`;
   });
+  console.log(fullPath);
 
   breadCrumbContainer.innerHTML = breadcrumbHTML;
 }
