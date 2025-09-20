@@ -2,7 +2,6 @@ function generateBreadCrumb() {
   const breadCrumbContainer = document.getElementById("breadcrumb");
   let pathArray = window.location.pathname.split("/").filter((p) => p);
   const repoName = "javascript-course-notes";
-  pathArray.unshift(repoName);
 
   // If last segment is index.html, drop it
   if (pathArray[pathArray.length - 1]?.toLowerCase() === "index.html") {
@@ -27,7 +26,6 @@ function generateBreadCrumb() {
     breadcrumbHTML += `<a href="${fullPath}">${decodeURIComponent(segment)}</a>
        <img src="https://khalidrahmanhanify.github.io/${repoName}/assets/Icons/arrow_right.png" style="width: 20px; height: 20px;"/>`;
   });
-  console.log(fullPath);
 
   breadCrumbContainer.innerHTML = breadcrumbHTML;
 }
