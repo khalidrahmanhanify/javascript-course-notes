@@ -4,17 +4,21 @@ function generateBreadCrumb() {
   // Split the pathname into parts
   let pathArray = window.location.pathname.split("/").filter((p) => p);
 
-  const repoName = pathArray.length > 0 ? pathArray[0] : "courses-notes";
+  // Detect repo name (first segment)
+  const repoName = pathArray.length > 0 ? pathArray[0] : "";
   const basePath = `/${repoName}`;
 
-  pathArray.shift();
+  // Remove repo name from breadcrumb segments
+  if (repoName) {
+    pathArray.shift();
+  }
 
   // If last segment is index.html, drop it
   if (pathArray[pathArray.length - 1]?.toLowerCase() === "index.html") {
     pathArray.pop();
   }
 
-  // Start breadcrumb with monitor icon (link to repo root)
+  // Start breadcrumb with monitor icon (always links to repo root index.html)
   let breadcrumbHTML = `
     <a href="${basePath}/index.html">
       <img src="${basePath}/assets/Icons/monitor.png" style="width: 30px;"/>
@@ -26,9 +30,10 @@ function generateBreadCrumb() {
     fullPath += `/${segment}`;
     const isLast = index === pathArray.length - 1;
 
-    breadcrumbHTML += `
-      <img src="${basePath}/assets/Icons/arrow_right.png" style="width: 20px; height: 20px;"/>
-    `;
+    // Add arrow only if it's not the last segment
+    breadcrumbHTML += isLast
+      ? " "
+      : `<img src="${basePath}/assets/Icons/arrow_right.png" style="width: 20px; height: 20px;"/>`;
 
     if (!isLast) {
       breadcrumbHTML += `<a href="${basePath}${fullPath}">${decodeURIComponent(
