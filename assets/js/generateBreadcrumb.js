@@ -1,13 +1,14 @@
 function generateBreadCrumb() {
   const breadCrumbContainer = document.getElementById("breadcrumb");
 
-  // Get path parts
+  // Split the pathname into parts
   let pathArray = window.location.pathname.split("/").filter((p) => p);
 
+  // Detect repo name (first part of GitHub Pages URL)
   const repoName = pathArray.length > 0 ? pathArray[0] : "";
   const basePath = `/${repoName}`;
 
-  // Drop the repo name so breadcrumb starts clean
+  // Drop repo name from breadcrumb display
   if (repoName) {
     pathArray.shift();
   }
@@ -17,7 +18,7 @@ function generateBreadCrumb() {
     pathArray.pop();
   }
 
-  // Start breadcrumb with home icon
+  // Start breadcrumb with monitor icon (link to repo root)
   let breadcrumbHTML = `
     <a href="${basePath}/index.html">
       <img src="${basePath}/assets/Icons/monitor.png" style="width: 30px;"/>
