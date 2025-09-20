@@ -1,0 +1,73 @@
+/* ============================= */
+/*        GLOBAL STYLES          */
+/* ============================= */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  color: #ffffff;
+  background-color: #191919;
+}
+
+/* ============================= */
+/*        COURSES CARDS           */
+/* ============================= */
+.courses-cards {
+  margin: 50px 0 !important;
+}
+.courses-card {
+  background-color: #262626;
+  border-radius: 20px;
+  overflow: hidden;
+  text-decoration: none;
+  color: white;
+}
+
+.card-img {
+  width: 100%;
+  background-size: cover;
+}
+.course-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.course-name img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+}
+.course-name p {
+  font-size: 1.5rem;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+}
+
+.teacher {
+  font-size: 14px;
+}
+
+.card-status {
+  font-size: 14px;
+  background-color: #6cbb5a80;
+  padding: 8px 10px;
+  border-radius: 10px;
+  width: fit-content;
+}

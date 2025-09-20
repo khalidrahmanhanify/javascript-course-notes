@@ -1,0 +1,86 @@
+/* General Styles */
+
+.breadcrumb {
+  width: 100%;
+  height: 60px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 80px;
+  background-color: #262626;
+}
+.breadcrumb a {
+  text-decoration: none;
+  color: white;
+}
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+.page-title {
+  font-size: 32px;
+  padding: 103px 0px 30px;
+}
+
+.general-container {
+  width: 100%;
+  padding: 0 80px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+.grid {
+  display: grid;
+  gap: 20px;
+}
+
+.grid:not(:last-child) {
+  margin-bottom: 9.6rem;
+}
+
+.grid--2-cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--3-cols {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--4-cols {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* ******************************* */
+/* Course Sections */
+/* ******************************* */
+
+.course-sections {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  row-gap: 10px;
+}
+
+.course-section,
+.course-note {
+  height: 64px;
+  font-size: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background-color: #262626;
+  padding: 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #fff;
+  transition: background 0.2s;
+}
+.course-section:hover,
+.course-note:hover {
+  background-color: #333;
+  cursor: pointer;
+}
+.course-section::before,
+.course-note::before {
+  content: "↗ ";
+  color: #aaa;
+}
