@@ -1,4 +1,4 @@
-📘 My Notes Website
+# 📘 My Notes Website
 
 A personal website to organize and share notes from different courses in a clean and structured way. Each course has its own section with HTML pages and Markdown notes for easy access and readability.
 
